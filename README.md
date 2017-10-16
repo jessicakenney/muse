@@ -46,8 +46,8 @@ to a light mid-century modern typeface to accentuate the design.
 * Look into Buffer message that appears when a color swatch is clicked.
 
 ## API Data Example:
-![Alt text](app/src/main/res/drawable/CH-api.1.png) 
-![Alt text](app/src/main/res/drawable/CH-api.2.png) 
+![Alt text](app/src/main/res/drawable/ch-api.png)
+![Alt text](app/src/main/res/drawable/ch-api2.png)
 
 ## Setup/Installation:
 * Clone the repo
