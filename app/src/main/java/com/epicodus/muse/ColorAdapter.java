@@ -46,12 +46,12 @@ public class ColorAdapter extends BaseAdapter {
 
 
             // pull views
-            TextView letterView = (TextView) gridView
+            TextView colorButton = (TextView) gridView
                     .findViewById(R.id.grid_item_color);
 
             // set values into views
-            letterView.setText(mColors[position]);  // using dummy data for now
-            letterView.setBackgroundColor(parseColor(mColors[position]));
+            colorButton.setText(mColors[position]);
+            colorButton.setBackgroundColor(parseColor(mColors[position]));
         } else {
             gridView = (View) convertView;
         }

@@ -13,6 +13,8 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.appNameTextView) TextView mAppNameTextView;
+    @Bind(R.id.cooperTextView) TextView mCooperTextView;
+    @Bind(R.id.hewittTextView) TextView mHewittTextView;
     @Bind(R.id.colorsButton) Button mColorsButton;
 
     @Override
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAppNameTextView.setTypeface(typeface);
 
         mColorsButton.setOnClickListener(this);
+        mCooperTextView.setOnClickListener(this);
+        mHewittTextView.setOnClickListener(this);
 
     }//onCreate
 
@@ -34,6 +38,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent (MainActivity.this, ColorsActivity.class);
             startActivity(intent);
         }
+        if (v == mCooperTextView | v == mHewittTextView){
+            Intent intent = new Intent (MainActivity.this, AboutActivity.class);
+            startActivity(intent);
+
+        };
 
     }//onClick
 

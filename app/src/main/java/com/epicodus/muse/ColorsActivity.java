@@ -2,7 +2,10 @@ package com.epicodus.muse;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 public class ColorsActivity extends AppCompatActivity {
     GridView gridView;
@@ -33,8 +36,18 @@ public class ColorsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_colors);
 
         gridView = (GridView) findViewById(R.id.colorGridView);
-        gridView.setAdapter(new ColorAdapter(this, colors));
 
+        colorAdapter = new ColorAdapter(this, colors);
+        gridView.setAdapter(colorAdapter);
+
+        gridView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                String selectedItem = colorAdapter.getItem(position).toString();
+                Toast.makeText(ColorsActivity.this, selectedItem, Toast.LENGTH_SHORT).show();
+                //testTextView.append(selectedItem);
+            }
+        });
     }
 
 

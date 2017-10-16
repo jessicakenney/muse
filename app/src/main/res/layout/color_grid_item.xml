@@ -13,11 +13,11 @@
         <!--android:text="Letter" />-->
 
     <TextView
-        android:layout_width="60sp"
-        android:textSize="10sp"
-        android:layout_height="60sp"
         android:id="@+id/grid_item_color"
+        android:layout_width="60sp"
+        android:layout_height="30sp"
         android:layout_weight="1"
-        android:gravity="center_horizontal" />
+        android:gravity="center"
+        android:textSize="12sp" />
 
 </LinearLayout>
