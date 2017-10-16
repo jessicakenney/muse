@@ -49,6 +49,10 @@ to a light mid-century modern typeface to accentuate the design.
 ![Alt text](app/src/main/res/drawable/CH-api.1.png) 
 ![Alt text](app/src/main/res/drawable/CH-api.2.png) 
 
+## Setup/Installation:
+* Clone the repo
+* Open in Android Studio with Virtual Android Device, run app 
+
 ## Technologies Used
 Android Studio, Postman, Cooper Hewitt API, Java
 
