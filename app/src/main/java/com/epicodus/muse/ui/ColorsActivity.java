@@ -1,13 +1,18 @@
-package com.epicodus.muse;
+package com.epicodus.muse.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
+
+import com.epicodus.muse.R;
+import com.epicodus.muse.adapters.ColorAdapter;
 
 public class ColorsActivity extends AppCompatActivity {
+    public static final String TAG = ColorsActivity.class.getSimpleName();
     GridView gridView;
     ColorAdapter colorAdapter;
     //Map<String, String> colors = new HashMap<String,String>();
@@ -44,8 +49,11 @@ public class ColorsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 String selectedItem = colorAdapter.getItem(position).toString();
-                Toast.makeText(ColorsActivity.this, selectedItem, Toast.LENGTH_SHORT).show();
-                //testTextView.append(selectedItem);
+                //Toast.makeText(ColorsActivity.this, selectedItem, Toast.LENGTH_SHORT).show();
+                Log.v(TAG, "Color selected: "+selectedItem);
+                Intent intent = new Intent(ColorsActivity.this, ArtifactsListActivity.class);
+                intent.putExtra("color", selectedItem);
+                startActivity(intent);
             }
         });
     }
