@@ -6,9 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.epicodus.muse.R;
+import com.epicodus.muse.models.Artifact;
 import com.epicodus.muse.services.CooperHewittService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import okhttp3.Call;
@@ -17,7 +19,7 @@ import okhttp3.Response;
 
 public class ArtifactsListActivity extends AppCompatActivity {
     public static final String TAG = ArtifactsListActivity.class.getSimpleName();
-//    public ArrayList<Artifact> artifacts = new ArrayList<>();
+    public ArrayList<Artifact> artifacts = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +47,11 @@ public class ArtifactsListActivity extends AppCompatActivity {
                 try {
                     String jsonData = response.body().string();
                     Log.v(TAG, jsonData);
+                    artifacts = cooperHewittService.processResults(response);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-//                artifacts = cooperHewittService.processResults(response);
 
 //                RestaurantsActivity.this.runOnUiThread(new Runnable() {
 //

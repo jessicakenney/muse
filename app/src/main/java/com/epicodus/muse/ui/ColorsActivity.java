@@ -52,7 +52,7 @@ public class ColorsActivity extends AppCompatActivity {
                 //Toast.makeText(ColorsActivity.this, selectedItem, Toast.LENGTH_SHORT).show();
                 Log.v(TAG, "Color selected: "+selectedItem);
                 Intent intent = new Intent(ColorsActivity.this, ArtifactsListActivity.class);
-                intent.putExtra("color", selectedItem);
+                intent.putExtra("color", "lightpink");
                 startActivity(intent);
             }
         });
