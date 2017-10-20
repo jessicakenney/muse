@@ -1,9 +1,12 @@
 package com.epicodus.muse.models;
 
+import org.parceler.Parcel;
+
 /**
  * Created by momma on 10/19/17.
  */
 
+@Parcel
 public class Artifact {
     private String title;
     private String type;
@@ -14,6 +17,7 @@ public class Artifact {
     private String objectId;
     private String imageUrl;
 
+    public Artifact() {}
     public Artifact( String title, String type, String medium, String date, String description, String justification, String objectId, String imageUrl ){
 
         this.title = title;
