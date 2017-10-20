@@ -51,7 +51,7 @@ public class ColorsActivity extends AppCompatActivity {
                 String selectedItem = colorAdapter.getItem(position).toString();
                 //Toast.makeText(ColorsActivity.this, selectedItem, Toast.LENGTH_SHORT).show();
                 Log.v(TAG, "Color selected: "+selectedItem);
-                Intent intent = new Intent(ColorsActivity.this, ArtifactsListActivity.class);
+                Intent intent = new Intent(ColorsActivity.this, ArtifactListActivity.class);
                 intent.putExtra("color", "lightpink");
                 startActivity(intent);
             }

@@ -30,7 +30,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.muse.ui.MainActivity" />
         </activity>
-        <activity android:name=".ui.ArtifactsListActivity"></activity>
+        <activity android:name=".ui.ArtifactListActivity"></activity>
     </application>
 
 </manifest>

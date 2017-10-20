@@ -73,17 +73,18 @@ public class CooperHewittService {
                 String type = obj.getString("type");
                 String medium = obj.getString("medium");
                 String date = obj.getString("date");
-                String description = obj.getString("descriptiont");
+                String description = obj.getString("description");
                 String justification = obj.getString("justification");
                 String objectId = obj.getString("id");
 
-                JSONArray imagesJSON = obj.getJSONArray("images");
-                ArrayList<String> images = new ArrayList<>();
+//                JSONArray imagesJSON = obj.getJSONArray("images");
+//                ArrayList<String> images = new ArrayList<>();
+//
+//                //first index is 'b' image
+//                String imageUrl = imagesJSON.getJSONObject(0).getString("url");
+//                Log.v(TAG, ">>>Image URL  "+ imageUrl);
 
-                //first index is 'b' image
-                String imageUrl = imagesJSON.getJSONObject(0).getString("url");
-                Log.v(TAG, ">>>Image URL  "+ imageUrl);
-
+                String imageUrl = "just keep swimming";
                 Artifact artifact = new Artifact(title, type, medium, date, description, justification, objectId, imageUrl);
                 artifacts.add(artifact);
             }
