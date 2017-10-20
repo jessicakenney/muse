@@ -64,6 +64,7 @@ public class ArtifactListActivity extends AppCompatActivity {
                           for (Artifact artifact : artifacts) {
                             Log.d(TAG, "Title: " + artifact.getTitle());
                             Log.d(TAG, "Type: " + artifact.getType());
+                            Log.d(TAG, "Url: " + artifact.getUrl());
                             Log.d(TAG, "Medium: " + artifact.getMedium());
                             Log.d(TAG, "Date: " + artifact.getDate());
                             Log.d(TAG, "Description: " + artifact.getDescription());

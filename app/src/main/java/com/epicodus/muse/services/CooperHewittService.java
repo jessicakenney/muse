@@ -71,6 +71,7 @@ public class CooperHewittService {
                 JSONObject obj = objectsJSON.getJSONObject(i);
                 String title = obj.getString("title");
                 String type = obj.getString("type");
+                String url = obj.getString("url");
                 String medium = obj.getString("medium");
                 String date = obj.getString("date");
                 String description = obj.getString("description");
@@ -81,9 +82,8 @@ public class CooperHewittService {
 
                 JSONObject foo = imagesJSON.getJSONObject(0);
                 String imageUrl = foo.getJSONObject("b").getString("url");
-                Log.v(TAG, ">>>Image URL 'b'  "+imageUrl);
 
-                Artifact artifact = new Artifact(title, type, medium, date, description, justification, objectId, imageUrl);
+                Artifact artifact = new Artifact(title, type, url, medium, date, description, justification, objectId, imageUrl);
                 artifacts.add(artifact);
             }
         }

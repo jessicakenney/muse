@@ -10,6 +10,7 @@ import org.parceler.Parcel;
 public class Artifact {
     private String title;
     private String type;
+    private String url;
     private String medium;
     private String date;
     private String description;
@@ -18,10 +19,11 @@ public class Artifact {
     private String imageUrl;
 
     public Artifact() {}
-    public Artifact( String title, String type, String medium, String date, String description, String justification, String objectId, String imageUrl ){
+    public Artifact( String title, String type, String url, String medium, String date, String description, String justification, String objectId, String imageUrl ){
 
         this.title = title;
         this.type = type;
+        this.url = url;
         this.medium = medium;
         this.date = date;
         this.description = description;
@@ -36,6 +38,10 @@ public class Artifact {
 
     public String getType() {
         return type;
+    }
+
+    public String getUrl() {
+        return url;
     }
 
     public String getMedium() {
