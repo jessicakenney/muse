@@ -8,71 +8,71 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+        android:background="@color/white"
+        android:weightSum="1">
 
         <ImageView
+            android:id="@+id/artifactImageView"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:id="@+id/artifactImageView"
-            android:src="@drawable/waffles"
-            android:scaleType="centerCrop" />
+            android:layout_gravity="center_horizontal|center"
+            android:layout_weight="0.53"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="0.21"
             android:background="@android:color/white"
-            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:paddingBottom="20dp">
+            android:paddingTop="20dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Title"
                 android:id="@+id/artifactTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:textSize="20sp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Medium"
-                android:id="@+id/artifactMediumTextView"
-                android:layout_alignTop="@+id/artifactTitleTextView"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Justification"
-                android:id="@+id/artifactJustificationTextView"
-                android:textColor="@color/colorAccent"
-                android:textStyle="italic"
                 android:layout_alignParentTop="true"
+                android:text="Title"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/artifactMediumTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="100dp" />
+                android:layout_below="@+id/artifactTitleTextView"
+                android:text="Medium"
+                android:textColor="@color/black"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/artifactJustificationTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/artifactMediumTextView"
+                android:text="Justification"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/shareTextView"
+                android:drawableRight="@drawable/if_pinterest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/artifactJustificationTextView"
+                android:text="Share" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Save Artifact"
-                android:id="@+id/saveArtifactButton"
-                android:layout_alignParentBottom="true"
-                android:background="@color/colorAccent"
-                android:textColor="@color/colorPrimary"
-                android:textSize="15sp" />
-        </RelativeLayout>
     </LinearLayout>
 </FrameLayout>

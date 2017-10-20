@@ -23,7 +23,7 @@ public class ArtifactDetailFragment extends Fragment {
     @Bind(R.id.artifactTitleTextView) TextView mTitleLabel;
     @Bind(R.id.artifactMediumTextView) TextView mMediumLabel;
     @Bind(R.id.artifactJustificationTextView) TextView mJustificationLabel;
-    @Bind(R.id.saveArtifactButton) TextView mSaveArtifactButton;
+//    @Bind(R.id.saveArtifactButton) TextView mSaveArtifactButton;
 
     private Artifact mArtifact;
 
