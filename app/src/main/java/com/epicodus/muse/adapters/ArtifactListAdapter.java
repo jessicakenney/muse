@@ -56,14 +56,21 @@ public class ArtifactListAdapter extends RecyclerView.Adapter<ArtifactListAdapte
 
         public ArtifactViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
-            mContext = itemView.getContext();
-        }
+            try {
+                ButterKnife.bind(this, itemView);
+                mContext = itemView.getContext();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            }
 
         public void bindArtifact(Artifact artifact) {
             mTitleTextView.setText(artifact.getTitle());
             mTypeTextView.setText(artifact.getType());
             mMediumTextView.setText(artifact.getMedium());
+//            mTitleTextView.setText("test");
+//            mTypeTextView.setText("test");
+//            mMediumTextView.setText("test");
         }
     }
 }

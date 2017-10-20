@@ -21,9 +21,9 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class ArtifactListActivity extends AppCompatActivity {
+    public static final String TAG = ArtifactListActivity.class.getSimpleName();
     @Bind(R.id.recyclerArtifactsView) RecyclerView mRecyclerView;
     private ArtifactListAdapter mAdapter;
-    public static final String TAG = ArtifactListActivity.class.getSimpleName();
     public ArrayList<Artifact> artifacts = new ArrayList<>();
 
     @Override
