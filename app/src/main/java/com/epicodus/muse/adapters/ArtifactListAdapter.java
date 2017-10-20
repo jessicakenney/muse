@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.epicodus.muse.R;
 import com.epicodus.muse.models.Artifact;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,8 @@ import butterknife.ButterKnife;
  */
 
 public class ArtifactListAdapter extends RecyclerView.Adapter<ArtifactListAdapter.ArtifactViewHolder> {
+    private static final int MAX_WIDTH = 300;
+    private static final int MAX_HEIGHT = 300;
     private ArrayList<Artifact> mArtifacts = new ArrayList<>();
     private Context mContext;
 
@@ -49,7 +52,7 @@ public class ArtifactListAdapter extends RecyclerView.Adapter<ArtifactListAdapte
     public class ArtifactViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.artifactImageView) ImageView mArtifactImageView;
         @Bind(R.id.artifactTitleTextView) TextView mTitleTextView;
-        @Bind(R.id.artifactTypeTextView) TextView mTypeTextView;
+        //@Bind(R.id.artifactTypeTextView) TextView mTypeTextView;
         @Bind(R.id.artifactMediumTextView) TextView mMediumTextView;
 
         private Context mContext;
@@ -66,11 +69,14 @@ public class ArtifactListAdapter extends RecyclerView.Adapter<ArtifactListAdapte
 
         public void bindArtifact(Artifact artifact) {
             mTitleTextView.setText(artifact.getTitle());
-            mTypeTextView.setText(artifact.getType());
+            //mTypeTextView.setText(artifact.getType());
             mMediumTextView.setText(artifact.getMedium());
-//            mTitleTextView.setText("test");
-//            mTypeTextView.setText("test");
-//            mMediumTextView.setText("test");
+            Picasso.with(mContext)
+                    .load(artifact.getImageUrl())
+                    //.resize(MAX_WIDTH, MAX_HEIGHT)
+                    //.centerCrop()
+                    .placeholder(R.drawable.waffles)
+                    .into(mArtifactImageView);
         }
     }
 }

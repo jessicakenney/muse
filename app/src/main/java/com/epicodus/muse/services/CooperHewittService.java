@@ -77,14 +77,12 @@ public class CooperHewittService {
                 String justification = obj.getString("justification");
                 String objectId = obj.getString("id");
 
-//                JSONArray imagesJSON = obj.getJSONArray("images");
-//                ArrayList<String> images = new ArrayList<>();
-//
-//                //first index is 'b' image
-//                String imageUrl = imagesJSON.getJSONObject(0).getString("url");
-//                Log.v(TAG, ">>>Image URL  "+ imageUrl);
+                JSONArray imagesJSON = obj.getJSONArray("images");
 
-                String imageUrl = "just keep swimming";
+                JSONObject foo = imagesJSON.getJSONObject(0);
+                String imageUrl = foo.getJSONObject("b").getString("url");
+                Log.v(TAG, ">>>Image URL 'b'  "+imageUrl);
+
                 Artifact artifact = new Artifact(title, type, medium, date, description, justification, objectId, imageUrl);
                 artifacts.add(artifact);
             }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.epicodus.muse.R;
 import com.epicodus.muse.adapters.ArtifactListAdapter;
@@ -59,24 +60,20 @@ public class ArtifactListActivity extends AppCompatActivity {
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ArtifactListActivity.this);
                             mRecyclerView.setLayoutManager(layoutManager);
                             mRecyclerView.setHasFixedSize(true);
+
+                          for (Artifact artifact : artifacts) {
+                            Log.d(TAG, "Title: " + artifact.getTitle());
+                            Log.d(TAG, "Type: " + artifact.getType());
+                            Log.d(TAG, "Medium: " + artifact.getMedium());
+                            Log.d(TAG, "Date: " + artifact.getDate());
+                            Log.d(TAG, "Description: " + artifact.getDescription());
+                            Log.d(TAG, "Justification: " + artifact.getJustification());
+                            Log.d(TAG, "ObjectId: " + artifact.getObjectId());
+                            Log.d(TAG, "Image url: " + artifact.getImageUrl());
+                          }
                         }
                     });
             }
-
-
-//
-//                        for (Artifact artifact : artifacts) {
-//                            Log.d(TAG, "Name: " + restaurant.getName());
-//                            Log.d(TAG, "Phone: " + restaurant.getPhone());
-//                            Log.d(TAG, "Website: " + restaurant.getWebsite());
-//                            Log.d(TAG, "Image url: " + restaurant.getImageUrl());
-//                            Log.d(TAG, "Rating: " + Double.toString(restaurant.getRating()));
-//                            Log.d(TAG, "Address: " + android.text.TextUtils.join(", ", restaurant.getAddress()));
-//                            Log.d(TAG, "Categories: " + restaurant.getCategories().toString());
-//                        }
-//
-//                    }
-//                });
 
         });
     }
