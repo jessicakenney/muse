@@ -33,6 +33,17 @@ import okhttp3.Response;
 //            d: 320px on the longest side. This image is also dithered using our Atkinson dithering server for smaller filesize.
 //            sq: 300px square image that is cropped from the b image.
 
+    //need to take care of none found
+    //an all other nulls
+//    {
+//            "objects": [],
+//            "total": 0,
+//            "page": 1,
+//            "per_page": 100,
+//            "pages": 0,
+//            "stat": "ok"
+//            }
+
 
 public class CooperHewittService {
     public static final String TAG = CooperHewittService.class.getSimpleName();

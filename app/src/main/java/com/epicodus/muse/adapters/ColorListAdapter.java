@@ -64,11 +64,11 @@ public class ColorListAdapter extends RecyclerView.Adapter<ColorListAdapter.Colo
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
-            //String selectedItem = mColors[itemPosition].toString();
             String selectedItem = mColors[itemPosition];
-            Log.v(TAG, ".>>>>>...Color selected: "+selectedItem);
             Intent intent = new Intent(mContext, ArtifactListActivity.class);
-            intent.putExtra("color", "teal");
+            String clickedColor = selectedItem.substring(1);
+            Log.v(TAG, ".>>>>>...Color selected: "+clickedColor);
+            intent.putExtra("color", clickedColor);
             mContext.startActivity(intent);
         }
 
@@ -79,66 +79,3 @@ public class ColorListAdapter extends RecyclerView.Adapter<ColorListAdapter.Colo
     }
 }
 
-//the click listening moveed to the Adapter with Recycler view?
-//gridView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-//   @Override
-//  public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-//       //         String selectedItem = colorAdapter.getItem(position).toString();
-//        //        Log.v(TAG, "Color selected: "+selectedItem);
-//                Intent intent = new Intent(ColorListActivity.this, ArtifactListActivity.class);
-//                intent.putExtra("color", "teal");
-//                startActivity(intent);
-
-
-//public class ColorListAdapter extends BaseAdapter {
-//    private Context mContext;
-//    private String[] mColors;
-//
-//
-//    @Override
-//    public int getCount() {
-//        return mColors.length;
-//    }
-//
-//    @Override
-//    public Object getItem(int position) {
-//        return mColors[position];
-//    }
-//
-//    @Override
-//    public long getItemId(int position) {
-//        return 0;
-//    }
-//
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//        LayoutInflater inflater = (LayoutInflater) mContext
-//                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//
-//        View gridView;
-//
-//        if (convertView == null) {
-//            // get layout from xml file
-//            gridView = inflater.inflate(R.layout.color_grid_item, null);
-//
-//
-//            // pull views
-//            TextView colorButton = (TextView) gridView
-//                    .findViewById(R.id.grid_item_color);
-//
-//            // set values into views
-//            colorButton.setText(mColors[position]);
-//            colorButton.setBackgroundColor(parseColor(mColors[position]));
-//        } else {
-//            gridView = (View) convertView;
-//        }
-//        return gridView;
-//    }
-//
-//    public ColorListAdapter (Context context, String[] colors){
-//        this.mContext = context;
-//        this.mColors = colors;
-//    }
-//
-//
-// }
