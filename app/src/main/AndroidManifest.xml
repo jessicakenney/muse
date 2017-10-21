@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.ColorsActivity">
+        <activity android:name=".ui.ColorListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.muse.ui.MainActivity" />
@@ -33,7 +33,7 @@
         <activity android:name=".ui.ArtifactListActivity" >
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.epicodus.muse.ui.ColorsActivity" />
+            android:value="com.epicodus.muse.ui.ColorListActivity" />
         </activity>
         <activity android:name=".ui.ArtifactDetailActivity"></activity>
     </application>

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == mColorsButton){
-            Intent intent = new Intent (MainActivity.this, ColorsActivity.class);
+            Intent intent = new Intent (MainActivity.this, ColorListActivity.class);
             startActivity(intent);
         }
         if (v == mCooperTextView | v == mHewittTextView){

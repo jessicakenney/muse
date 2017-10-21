@@ -1,23 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!--<TextView-->
-        <!--android:layout_width="60sp"-->
-        <!--android:textSize="15sp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/grid_item_label"-->
-        <!--android:layout_weight="0.8"-->
-        <!--android:gravity="center_horizontal"-->
-        <!--android:text="Letter" />-->
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="16dp"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/grid_item_color"
-        android:layout_width="60sp"
-        android:layout_height="30sp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textSize="12sp" />
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+
+    <TextView
+        android:layout_margin="4dp"
+        android:id="@+id/grid_item_colorname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:orientation="vertical" android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/grid_item_color"-->
+        <!--android:layout_width="60sp"-->
+        <!--android:layout_height="30sp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="12sp" />-->
+
+<!--</LinearLayout>-->
