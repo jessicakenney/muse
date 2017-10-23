@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +26,10 @@ public class ArtifactDetailFragment extends Fragment implements View.OnClickList
     @Bind(R.id.artifactImageView) ImageView mImageLabel;
     @Bind(R.id.artifactTitleTextView) TextView mTitleLabel;
     @Bind(R.id.artifactMediumTextView) TextView mMediumLabel;
+    @Bind(R.id.artifactDescriptionTextView) TextView mDescriptionLabel;
     @Bind(R.id.artifactJustificationTextView) TextView mJustificationLabel;
     @Bind(R.id.websiteTextView) TextView mWebsiteLabel;
+    TextView scrollable;
 //    @Bind(R.id.saveArtifactButton) TextView mSaveArtifactButton;
 
     private Artifact mArtifact;
@@ -55,7 +57,11 @@ public class ArtifactDetailFragment extends Fragment implements View.OnClickList
 
         mTitleLabel.setText(mArtifact.getTitle());
         mMediumLabel.setText(mArtifact.getMedium());
+        mDescriptionLabel.setText(mArtifact.getDescription());
         mJustificationLabel.setText(mArtifact.getJustification());
+
+        scrollable = mJustificationLabel;
+        scrollable.setMovementMethod(new ScrollingMovementMethod());
 
         mWebsiteLabel.setOnClickListener(this);
 
@@ -64,7 +70,6 @@ public class ArtifactDetailFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        Log.v(TAG, ">>>HELLO intent");
         if (v == mWebsiteLabel) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse(mArtifact.getUrl()));

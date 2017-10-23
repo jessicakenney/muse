@@ -36,9 +36,6 @@
             android:value="com.epicodus.muse.ui.ColorListActivity" />
         </activity>
         <activity android:name=".ui.ArtifactDetailActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.muse.ui.ArtifactListActivity" />
         </activity>
     </application>
 

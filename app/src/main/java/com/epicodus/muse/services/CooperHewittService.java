@@ -81,12 +81,12 @@ public class CooperHewittService {
             for (int i = 0; i < objectsJSON.length(); i++) {
                 JSONObject obj = objectsJSON.getJSONObject(i);
                 String title = obj.getString("title");
-                String type = obj.getString("type");
+                String type = checkNull(obj.getString("type"));
                 String url = obj.getString("url");
-                String medium = obj.getString("medium");
+                String medium = checkNull(obj.getString("medium"));
                 String date = obj.getString("date");
-                String description = obj.getString("description");
-                String justification = obj.getString("justification");
+                String description = checkNull(obj.getString("description"));
+                String justification = checkNull(obj.getString("justification"));
                 String objectId = obj.getString("id");
 
                 JSONArray imagesJSON = obj.getJSONArray("images");
@@ -107,5 +107,15 @@ public class CooperHewittService {
         return artifacts;
     }
 
+    public String checkNull(String responseString) {
+        String result;
+        if (responseString == "null"){
+            result = "";
+        }
+        else {
+            result = responseString;
+        }
+        return result;
+    }
 
 }

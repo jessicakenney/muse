@@ -17,8 +17,6 @@ public class ColorListActivity extends AppCompatActivity {
     public static final String TAG = ColorListActivity.class.getSimpleName();
     ColorListAdapter mColorAdapter;
     @Bind(R.id.colorsRecyclerView) RecyclerView mRecyclerView;
-    String[] colors = new String[]{"#f0f8ff", "#faebd7", "#00ffff", "#7fffd4", "#f0ffff", "#f5f5dc", "#ffe4c4", "#000000", "#ffebcd", "#0000ff", "#8a2be2", "#a52a2a" };
-    //use constant CSS4_PALETTE_HEX
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

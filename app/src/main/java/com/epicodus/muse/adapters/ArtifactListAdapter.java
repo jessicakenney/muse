@@ -3,7 +3,6 @@ package com.epicodus.muse.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,8 +57,7 @@ public class ArtifactListAdapter extends RecyclerView.Adapter<ArtifactListAdapte
     public class ArtifactViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.artifactImageView) ImageView mArtifactImageView;
         @Bind(R.id.artifactTitleTextView) TextView mTitleTextView;
-        //@Bind(R.id.artifactTypeTextView) TextView mTypeTextView;
-        @Bind(R.id.artifactMediumTextView) TextView mMediumTextView;
+        //@Bind(R.id.artifactMediumTextView) TextView mMediumTextView;
 
         private Context mContext;
 
@@ -72,7 +70,6 @@ public class ArtifactListAdapter extends RecyclerView.Adapter<ArtifactListAdapte
 
         @Override
         public void onClick(View v) {
-            Log.v(TAG,">>>>>hello clicked");
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, ArtifactDetailActivity.class);
             intent.putExtra("position", itemPosition);
@@ -82,8 +79,7 @@ public class ArtifactListAdapter extends RecyclerView.Adapter<ArtifactListAdapte
 
         public void bindArtifact(Artifact artifact) {
             mTitleTextView.setText(artifact.getTitle());
-            //mTypeTextView.setText(artifact.getType());
-            mMediumTextView.setText(artifact.getMedium());
+            //mMediumTextView.setText(artifact.getMedium());
             Picasso.with(mContext)
                     .load(artifact.getImageUrl())
                     //.resize(MAX_WIDTH, MAX_HEIGHT)

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.epicodus.muse.R;
 import com.epicodus.muse.adapters.ArtifactListAdapter;
@@ -23,6 +24,7 @@ import okhttp3.Response;
 
 public class ArtifactListActivity extends AppCompatActivity {
     public static final String TAG = ArtifactListActivity.class.getSimpleName();
+    @Bind(R.id.nullSearchTextView) TextView mNullSearchTextView;
     @Bind(R.id.recyclerArtifactsView) RecyclerView mRecyclerView;
     private ArtifactListAdapter mAdapter;
     public ArrayList<Artifact> artifacts = new ArrayList<>();
@@ -55,11 +57,16 @@ public class ArtifactListActivity extends AppCompatActivity {
                     ArtifactListActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            mAdapter = new ArtifactListAdapter(getApplicationContext(), artifacts);
-                            mRecyclerView.setAdapter(mAdapter);
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ArtifactListActivity.this);
-                            mRecyclerView.setLayoutManager(layoutManager);
-                            mRecyclerView.setHasFixedSize(true);
+                            // if artifacts return 0, report  nullSearchTextView
+                            if ( artifacts.size() == 0 ) {
+                                mNullSearchTextView.setText("No results found for your query.");
+                            } else {
+                                mAdapter = new ArtifactListAdapter(getApplicationContext(), artifacts);
+                                mRecyclerView.setAdapter(mAdapter);
+                                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ArtifactListActivity.this);
+                                mRecyclerView.setLayoutManager(layoutManager);
+                                mRecyclerView.setHasFixedSize(true);
+                            }
 
                           for (Artifact artifact : artifacts) {
                             Log.d(TAG, "Title: " + artifact.getTitle());

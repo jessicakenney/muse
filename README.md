@@ -15,7 +15,7 @@ fingertips to spark their next project or daydream.
 
 ## Design MVP
 * Muse will provide a palette of colors for the user to select and browse through museum offerings
-and save them to a board.
+and save them to a collection.
 * A "random" feature will also be implemented to select a random Museum Object for user exploration.
 * Additional search /museum navigation can be included as project evolves.
 
@@ -28,22 +28,31 @@ to a light mid-century modern typeface to accentuate the design.
 ## Week 1 User Stories: 
 * Researched API Data to prepare app high level design.
 
+updated 10/20/2017
+
 |Function  | Activity | Description | Status |
 | ------------- | ------------- | ----------------- | ------------|
-|Main | MainActivity | 3x3 grid of images for navigation | incomplete | 
-|About | AboutActivity | app background | to do| 
-|Cooper Hewitt | MuseumActivity | museum background | need text, You can click CooperHewitt (this will move into 3x3 grid)|
-|Color Query | ColorsActivity | palette of colors to explore offerings| functionality started, click on color swatch  |
-|Museum Objects Result | ObjectsActivity | result of color query | week 2 API |
-|Museum Object Detail | ObjectDetailActivity | Museum Object Selection with option to save to board | week 2 API |
-|Random Museum Object | ObjectDetailActivity | random Museum ID passed (with option to save to board)| week 2 API |
-|Muse Boards Index | BoardIndexActivity | will include Dialog Fragment for User Input to Create New Board |  |
-|Muse Board | BoardActivity | will  include museum objects for specified board  |  |
+|Main | MainActivity | 3x3 grid of images for navigation | to do |
+|About | AboutActivity | app background | write text |
+|Color Query | ColorListActivity | palette of colors to query Museum collection| completed|
+|Museum Objects Result | ArtifactListActivity | result of color query | completed |
+|Museum Object Detail | ArtifactDetailActivity | Museum Object Selection with details| completed|
+|Muse Collections | CollectionIndexActivity | will include Dialog Fragment for User Input to Create New Board | week3 Persisting Data  |
+|Muse Collection | CollectionDetailActivity | will  include museum objects for specified collection  |  week3 |
+|Museum Object Detail | ArtifactDetailActivity | add option to save to Collection| week3|
+
+## Week2 Highlights
+ * Moved color Grid into RecyclerView
+ * CSS3_PALETTE in Constants
+ * Created Fragment for details of museum object with FragmentPagerAdapter
+ * Implicit Intent for all museum objects to view in the CooperHewitt website
 
 
-## Questions 
-* Currently determining how many colors makes sense to provide to the user for query.
-* Look into Buffer message that appears when a color swatch is clicked.
+## Problems to Address
+* User Input Form Objective still missing from week1 in plan for week3. User will input
+    name of "Collection" to save museum images in.
+* On the Detail page when there is lengthy background material, it is still getting cut
+    off at the bottom even in the scrollable view.
 
 ## API Data Example:
 ![Alt text](app/src/main/res/drawable/chapi.png)
