@@ -84,6 +84,15 @@
                 android:text="Justification"
                 android:textColor="@color/black" />
 
+            <TextView
+                android:id="@+id/webLinktextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View in Cooper Hewitt Website"
+                android:layout_above="@+id/artifactMediumTextView"
+                android:layout_toRightOf="@+id/websiteTextView"
+                android:layout_toEndOf="@+id/websiteTextView" />
+
 
         </RelativeLayout>
 
