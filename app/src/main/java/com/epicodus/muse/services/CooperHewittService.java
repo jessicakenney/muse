@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -45,30 +46,57 @@ import okhttp3.Response;
 //            }
 
 
+//    getRandom: https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getRandom&access_token=3d716e36f33a42d828cc679ee585b3db&has_image=1
+
+
 public class CooperHewittService {
     public static final String TAG = CooperHewittService.class.getSimpleName();
 
+
+
     public static void callArtifacts(String color, Callback callback) {
 
-        Log.v(TAG, ">>>Color selected  "+ color);
-        OkHttpClient client = new OkHttpClient.Builder()
-                .build();
+        if (color.equals("random")) {
+            // do getRandom call
+            Log.v(TAG, ">>>Random selected  " + color);
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .build();
 
-        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.COOPERHEWITT_BASE_URL).newBuilder();
-        urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.COOPERHEWITT_TOKEN);
-        urlBuilder.addQueryParameter(Constants.COOPERHEWITT_COLOR_QUERY_PARAMETER, color);
+            HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.COOPERHEWITT_OBJECT_BASE_URL).newBuilder();
+            urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.COOPERHEWITT_TOKEN);
 
-        String url = urlBuilder.build().toString();
-        Log.v(TAG, ">>>String url  "+ url);
+            String url = urlBuilder.build().toString();
+            Log.v(TAG, ">>>String url  " + url);
 
-        Request request= new Request.Builder()
+            Request request= new Request.Builder()
+                    .url(url)
+                    .build();
+
+            okhttp3.Call call = client.newCall(request);
+            call.enqueue(callback);
+        } else {
+            Log.v(TAG, ">>>Color selected"+color+"");
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .build();
+
+            HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.COOPERHEWITT_BASE_URL).newBuilder();
+            urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.COOPERHEWITT_TOKEN);
+            urlBuilder.addQueryParameter(Constants.COOPERHEWITT_COLOR_QUERY_PARAMETER, color);
+
+
+            String url = urlBuilder.build().toString();
+            Log.v(TAG, ">>>String url  " + url);
+
+            Request request= new Request.Builder()
                 .url(url)
                 .build();
 
-        okhttp3.Call call = client.newCall(request);
-        call.enqueue(callback);
+            okhttp3.Call call = client.newCall(request);
+            call.enqueue(callback);
+        }
 
     }
+
 
     public ArrayList<Artifact> processResults(Response response) {
         Log.d(TAG, ">>>processing results" );
@@ -77,6 +105,11 @@ public class CooperHewittService {
         try {
             String jsonData = response.body().string();
             JSONObject cooperhewittJSON = new JSONObject(jsonData);
+            //Map<String,JSONObject> map = (Map<String,JSONObject>)cooperhewittJSON.getMap();
+            Iterator<String> key = cooperhewittJSON.keys();
+            String mystring = key.next();
+            Log.d(TAG, "object or objects  : ---> "+mystring);
+
             JSONArray objectsJSON = cooperhewittJSON.getJSONArray("objects");
             for (int i = 0; i < objectsJSON.length(); i++) {
                 JSONObject obj = objectsJSON.getJSONObject(i);

@@ -37,6 +37,7 @@ public class ArtifactListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Intent intent = getIntent();
         String color = intent.getStringExtra("color");
+        String getRandom = intent.getStringExtra("random");
 
         getArtifacts(color);
     }
