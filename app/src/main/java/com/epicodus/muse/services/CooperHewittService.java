@@ -11,7 +11,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
@@ -27,6 +26,8 @@ import okhttp3.Response;
     //https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.search.collection&access_token=f93f6f24f4b39e1292abae903054adb6&color=%2300ffff
     //https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.search.objects&access_token=c37cbfe0d837df6dc706875195730201&color=lightpink&page=1&per_page=10
     //https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.search.objects&access_token=c37cbfe0d837df6dc706875195730201&color=lightpink&has_images=true&page=1&per_page=3
+
+    //https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.search.collection&access_token=a80be2bad8aec32943183f6134219e6c&query=chair&page=1&per_page=10'
 
 //    b: 1024px on the longest side.
 //            z: 640px on the longest side.
@@ -54,46 +55,63 @@ public class CooperHewittService {
 
 
 
-    public static void callArtifacts(String color, Callback callback) {
+    public static void callArtifacts(String option, String value, Callback callback) {
+        String url ="";
+        OkHttpClient client = new OkHttpClient.Builder().build();
 
-        if (color.equals("random")) {
-            // do getRandom call
-            Log.v(TAG, ">>>Random selected  " + color);
-            OkHttpClient client = new OkHttpClient.Builder()
-                    .build();
+        switch (option) {
+            case "color":
+                Log.v(TAG, ">>>Option selected "+option+"value "+value);
+                HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.COOPERHEWITT_BASE_URL).newBuilder();
+                urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.COOPERHEWITT_TOKEN);
+                urlBuilder.addQueryParameter(Constants.COOPERHEWITT_COLOR_QUERY_PARAMETER, value);
+                url = urlBuilder.build().toString();
+                Log.v(TAG, ">>>String url  " + url);
+                break;
+            case "random":
+                Log.v(TAG, ">>>Random selected  " + option);
+                HttpUrl.Builder urlBuilderN = HttpUrl.parse(Constants.COOPERHEWITT_OBJECT_BASE_URL).newBuilder();
+                urlBuilderN.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.COOPERHEWITT_TOKEN);
+                url = urlBuilderN.build().toString();
+                Log.v(TAG, ">>>String url  " + url);
+                break;
+            case "word":
+                HttpUrl.Builder urlBuilderM = HttpUrl.parse(Constants.COOPERHEWITT_SEARCH_BASE_URL).newBuilder();
+                urlBuilderM.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.COOPERHEWITT_TOKEN);
+                urlBuilderM.addQueryParameter(Constants.COOPERHEWITT_QUERY_PARAMETER, value);
+                url = urlBuilderM.build().toString();
+                break;
+        }
 
-            HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.COOPERHEWITT_OBJECT_BASE_URL).newBuilder();
-            urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.COOPERHEWITT_TOKEN);
+//        if (option.equals("random")) {
+//            // do getRandom call
+//            Log.v(TAG, ">>>Random selected  " + option);
+//            HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.COOPERHEWITT_OBJECT_BASE_URL).newBuilder();
+//            urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.COOPERHEWITT_TOKEN);
+//            url = urlBuilder.build().toString();
+//            Log.v(TAG, ">>>String url  " + url);
+//        } else {
+//            Log.v(TAG, ">>>Option selected "+option+"value "+value);
+//
+//            HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.COOPERHEWITT_BASE_URL).newBuilder();
+//            urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.COOPERHEWITT_TOKEN);
+//
+//            //urlBuilder.addQueryParameter(Constants.COOPERHEWITT_COLOR_QUERY_PARAMETER, option);
+//            if (option.equals("word")) {
+//                urlBuilder.addQueryParameter(Constants.COOPERHEWITT_QUERY_PARAMETER, value);
+//            } else  if (option.equals("color")) {
+//                urlBuilder.addQueryParameter(Constants.COOPERHEWITT_COLOR_QUERY_PARAMETER, value);
+//            }
+//            url = urlBuilder.build().toString();
+//            Log.v(TAG, ">>>String url  " + url);
+//        }
 
-            String url = urlBuilder.build().toString();
-            Log.v(TAG, ">>>String url  " + url);
-
-            Request request= new Request.Builder()
-                    .url(url)
-                    .build();
-
-            okhttp3.Call call = client.newCall(request);
-            call.enqueue(callback);
-        } else {
-            Log.v(TAG, ">>>Color selected"+color+"");
-            OkHttpClient client = new OkHttpClient.Builder()
-                    .build();
-
-            HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.COOPERHEWITT_BASE_URL).newBuilder();
-            urlBuilder.addQueryParameter(Constants.API_KEY_QUERY_PARAMETER, Constants.COOPERHEWITT_TOKEN);
-            urlBuilder.addQueryParameter(Constants.COOPERHEWITT_COLOR_QUERY_PARAMETER, color);
-
-
-            String url = urlBuilder.build().toString();
-            Log.v(TAG, ">>>String url  " + url);
-
-            Request request= new Request.Builder()
+        Request request= new Request.Builder()
                 .url(url)
                 .build();
 
-            okhttp3.Call call = client.newCall(request);
-            call.enqueue(callback);
-        }
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(callback);
 
     }
 
@@ -105,10 +123,9 @@ public class CooperHewittService {
         try {
             String jsonData = response.body().string();
             JSONObject cooperhewittJSON = new JSONObject(jsonData);
-            //Map<String,JSONObject> map = (Map<String,JSONObject>)cooperhewittJSON.getMap();
-            Iterator<String> key = cooperhewittJSON.keys();
-            String mystring = key.next();
-            Log.d(TAG, "object or objects  : ---> "+mystring);
+            //Iterator<String> key = cooperhewittJSON.keys();
+            //String mystring = key.next();
+            //Log.d(TAG, "object or objects  : ---> "+mystring);
 
             JSONArray objectsJSON = cooperhewittJSON.getJSONArray("objects");
             for (int i = 0; i < objectsJSON.length(); i++) {

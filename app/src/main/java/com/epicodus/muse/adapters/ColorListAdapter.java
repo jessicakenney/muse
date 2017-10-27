@@ -68,7 +68,8 @@ public class ColorListAdapter extends RecyclerView.Adapter<ColorListAdapter.Colo
             Intent intent = new Intent(mContext, ArtifactListActivity.class);
             String clickedColor = selectedItem.substring(1);
             Log.v(TAG, ".>>>>>...Color selected: "+clickedColor);
-            intent.putExtra("color", clickedColor);
+            intent.putExtra("option", "color");
+            intent.putExtra("value", clickedColor);
             mContext.startActivity(intent);
         }
 

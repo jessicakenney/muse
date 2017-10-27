@@ -36,16 +36,18 @@ public class ArtifactListActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
         Intent intent = getIntent();
-        String color = intent.getStringExtra("color");
+        String value = intent.getStringExtra("value");
+        String option = intent.getStringExtra("option");
+
         String getRandom = intent.getStringExtra("random");
 
-        getArtifacts(color);
+        getArtifacts(option, value);
     }
 
-    private void getArtifacts(String color) {
+    private void getArtifacts(String option, String value) {
         final CooperHewittService cooperHewittService = new CooperHewittService();
 
-        cooperHewittService.callArtifacts(color, new Callback() {
+        cooperHewittService.callArtifacts(option, value, new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {

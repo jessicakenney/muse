@@ -6,13 +6,21 @@ package com.epicodus.muse;
 
 //ref
 //    https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.search.collection&access_token=c37cbfe0d837df6dc706875195730201&color=daa520&page=1&per_page=10'
+
+//    https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.search.collection&access_token=a80be2bad8aec32943183f6134219e6c&query=chair&page=1&per_page=10'
+
+// SEARCHQUERY   https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.search.objects&access_token=6f159a2bc2c42de659123d2fc7957f9a&query=dog&has_images=1&page=1&per_page=10'
 //    getRandom: https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getRandom&access_token=3d716e36f33a42d828cc679ee585b3db&has_image=1
+
+
 public class Constants {
     public static final String COOPERHEWITT_BASE_URL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.search.collection&page=1&per_page=10";
     public static final String COOPERHEWITT_OBJECT_BASE_URL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.objects.getRandom&has_image=1";
+    public static final String COOPERHEWITT_SEARCH_BASE_URL = "https://api.collection.cooperhewitt.org/rest/?method=cooperhewitt.search.objects&has_images=1&page=1&per_page=10";
     public static final String API_KEY_QUERY_PARAMETER = "access_token";
     public static final String COOPERHEWITT_TOKEN = BuildConfig.COOPERHEWITT_TOKEN;
     public static final String COOPERHEWITT_COLOR_QUERY_PARAMETER = "color";
+    public static final String COOPERHEWITT_QUERY_PARAMETER = "query";
 
     public static final String[] CSS3_PALETTE_HEX = new String[] {
             "#7cfc00",

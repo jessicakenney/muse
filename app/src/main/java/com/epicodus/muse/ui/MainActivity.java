@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.hewittTextView) TextView mHewittTextView;
     @Bind(R.id.colorsButton) Button mColorsButton;
     @Bind(R.id.randomButton) Button mRandomButton;
+    @Bind(R.id.wordButton) Button mWordButton;
+    @Bind(R.id.queryTextView) TextView mQueryTextView;
+    @Bind(R.id.enterWordButton) Button mEnterWordButton;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -41,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mColorsButton.setOnClickListener(this);
         mRandomButton.setOnClickListener(this);
+        mWordButton.setOnClickListener(this);
+        mEnterWordButton.setOnClickListener(this);
         mCooperTextView.setOnClickListener(this);
         mHewittTextView.setOnClickListener(this);
 
@@ -121,6 +126,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        String inputWord = "";
+
         if (v == mColorsButton){
             Intent intent = new Intent (MainActivity.this, ColorListActivity.class);
             startActivity(intent);
@@ -131,6 +138,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("color", "random");
             startActivity(intent);
         }
+        if (v == mWordButton){
+            Log.v(TAG, ".>>>>>...Word selected: ");
+            //make visible a textbox to enter query word
+            if ( mQueryTextView.getVisibility() == View.VISIBLE) {
+                mQueryTextView.setVisibility(View.INVISIBLE);
+                mEnterWordButton.setVisibility(View.INVISIBLE);
+
+            } else {
+                mQueryTextView.setVisibility(View.VISIBLE);
+                mEnterWordButton.setVisibility(View.VISIBLE);
+            }
+        }
+        if (v == mEnterWordButton){
+            Log.v(TAG, ".>>>>>...Enter Word Button Pressed: ");
+            inputWord = mQueryTextView.getText().toString().trim();
+            if (inputWord.equals("")) {
+                mQueryTextView.setError("Please enter word to search");
+                return;
+            }
+            Log.v(TAG, ".>>>>>...WordEntered: "+inputWord);
+            Intent intent = new Intent (MainActivity.this,ArtifactListActivity.class );
+            intent.putExtra("option", "word");
+            intent.putExtra("value", inputWord);
+            startActivity(intent);
+        }
+
         if (v == mCooperTextView | v == mHewittTextView){
             Intent intent = new Intent (MainActivity.this, AboutActivity.class);
             startActivity(intent);
