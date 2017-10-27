@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "765762339217",
+    "firebase_url": "https://muse-c4531.firebaseio.com",
+    "project_id": "muse-c4531",
+    "storage_bucket": "muse-c4531.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765762339217:android:70591e43c84e0618",
+        "android_client_info": {
+          "package_name": "com.epicodus.muse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "765762339217-4tg1up1q4don3tbqjvvis86g3tq9739o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.epicodus.muse",
+            "certificate_hash": "066da948296179c5d1a1918237ca652f9b0d75c9"
+          }
+        },
+        {
+          "client_id": "765762339217-6vqvggbcpla78qs97lg71plj8sd5o71v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK1kokZ9A1GSSupRsMgI6lRs3xCKSa9Bk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "765762339217-6vqvggbcpla78qs97lg71plj8sd5o71v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
