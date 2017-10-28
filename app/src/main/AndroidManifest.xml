@@ -38,7 +38,8 @@
         <activity android:name=".ui.ArtifactDetailActivity" />
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.CreateAccountActivity" />
-        <activity android:name=".ui.SavedArtifactListActivity"></activity>
+        <activity android:name=".ui.SavedArtifactListActivity" />
+        <activity android:name=".ui.UserAccountActivity"></activity>
     </application>
 
 </manifest>

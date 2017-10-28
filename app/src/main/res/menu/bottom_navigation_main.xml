@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="home"
+        android:visible="true"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_about"
+        android:enabled="true"
+        android:icon="@drawable/ic_description_black_24dp"
+        android:title="about"
+        android:visible="true"
+        app:showAsAction="always" />
+    <!--<item-->
+        <!--android:id="@+id/action_myGallery"-->
+        <!--android:enabled="true"-->
+        <!--android:icon="@drawable/ic_content_copy_black_24dp"-->
+        <!--android:title="my gallery"-->
+        <!--android:visible="true"-->
+        <!--app:showAsAction="always" />-->
+    <item
+        android:id="@+id/action_account"
+        android:enabled="true"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="account"
+        android:visible="true"
+        app:showAsAction="always" />
+</menu>
