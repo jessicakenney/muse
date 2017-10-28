@@ -17,6 +17,7 @@ public class Artifact {
     private String justification;
     private String objectId;
     private String imageUrl;
+    private String pushId;
 
     public Artifact() {}
     public Artifact( String title, String type, String url, String medium, String date, String description, String justification, String objectId, String imageUrl ){
@@ -64,6 +65,14 @@ public class Artifact {
     }
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
 }

@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                //display welcome message
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     getSupportActionBar().setTitle("Welcome, " + user.getDisplayName());
@@ -96,7 +95,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FirebaseUser user = mAuth.getCurrentUser();
         Log.d(TAG, ">>>: mCurrentUser >>>> "+user);
 
-        //if (mAuthListener != null) {
         if(user != null ) {
             menuLogin.setVisible(false);
             menuLogout.setVisible(true);
@@ -120,6 +118,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             logout();
             return true;
         }
+        if (id == R.id.action_galleries) {
+            Intent intent = new Intent(MainActivity.this, SavedArtifactListActivity.class);
+            startActivity(intent);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -135,32 +138,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v == mRandomButton){
             Log.v(TAG, ".>>>>>...RANDOM selected: ");
             Intent intent = new Intent (MainActivity.this,ArtifactListActivity.class );
-            intent.putExtra("color", "random");
+            intent.putExtra("option", "random");
             startActivity(intent);
         }
         if (v == mWordButton){
             Log.v(TAG, ".>>>>>...Word selected: ");
-            //make visible a textbox to enter query word
-            if ( mQueryTextView.getVisibility() == View.VISIBLE) {
-                mQueryTextView.setVisibility(View.INVISIBLE);
-                mEnterWordButton.setVisibility(View.INVISIBLE);
-
-            } else {
-                mQueryTextView.setVisibility(View.VISIBLE);
-                mEnterWordButton.setVisibility(View.VISIBLE);
-            }
-        }
-        if (v == mEnterWordButton){
-            Log.v(TAG, ".>>>>>...Enter Word Button Pressed: ");
-            inputWord = mQueryTextView.getText().toString().trim();
-            if (inputWord.equals("")) {
-                mQueryTextView.setError("Please enter word to search");
-                return;
-            }
-            Log.v(TAG, ".>>>>>...WordEntered: "+inputWord);
             Intent intent = new Intent (MainActivity.this,ArtifactListActivity.class );
             intent.putExtra("option", "word");
-            intent.putExtra("value", inputWord);
             startActivity(intent);
         }
 

@@ -43,12 +43,31 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/websiteTextView"
+                android:id="@+id/galleryTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/artifactTitleTextView"
+                android:drawableRight="@drawable/ic_add_black_24dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/galleryLinktextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save to Gallery"
+                android:layout_above="@+id/websiteTextView"
+                android:layout_toRightOf="@+id/galleryTextView"
+                android:layout_toEndOf="@+id/galleryTextView" />
+
+            <TextView
+                android:id="@+id/websiteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/galleryTextView"
                 android:drawableRight="@drawable/ic_exit_to_app_black_24dp"
                 android:text="" />
 

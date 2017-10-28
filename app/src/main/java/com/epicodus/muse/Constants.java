@@ -22,6 +22,9 @@ public class Constants {
     public static final String COOPERHEWITT_COLOR_QUERY_PARAMETER = "color";
     public static final String COOPERHEWITT_QUERY_PARAMETER = "query";
 
+    public static final String FIREBASE_CHILD_ARTIFACTS = "artifacts";
+    public static final String PREFERENCES_WORD_KEY = "word";
+
     public static final String[] CSS3_PALETTE_HEX = new String[] {
             "#7cfc00",
             "#808080",
