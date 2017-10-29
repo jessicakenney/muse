@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.epicodus.muse.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,6 +22,8 @@ public class UserAccountActivity extends AppCompatActivity implements View.OnCli
     @Bind(R.id.userTextView) TextView mUserTextView;
     @Bind(R.id.galleryButton) Button mGalleryButton;
     @Bind(R.id.logoutButton) Button mLogoutButton;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,22 @@ public class UserAccountActivity extends AppCompatActivity implements View.OnCli
 
         mGalleryButton.setOnClickListener(this);
         mLogoutButton.setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        Log.v(TAG, ">>need to set user name here "+user.getDisplayName());
+        mUserTextView.setText("Hi "+user.getDisplayName());
+
+//        mAuthListener = new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                FirebaseUser user = firebaseAuth.getCurrentUser();
+//                if (user != null) {
+//                    //when there is a user logged in
+//                } else {
+//                }
+//            }
+//        };
 
     }
 
