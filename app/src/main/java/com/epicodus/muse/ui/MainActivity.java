@@ -21,7 +21,8 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = MainActivity.class.getSimpleName();
-    @Bind(R.id.appNameTextView) TextView mAppNameTextView;
+    @Bind(R.id.titleTextView) TextView mAppNameTextView;
+    @Bind(R.id.exploreTextView) TextView mExploreTextView;
     @Bind(R.id.cooperTextView) TextView mCooperTextView;
     @Bind(R.id.hewittTextView) TextView mHewittTextView;
     @Bind(R.id.colorsButton) Button mColorsButton;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
         mAppNameTextView.setTypeface(typeface);
+        mExploreTextView.setTypeface(typeface);
 
         mColorsButton.setOnClickListener(this);
         mRandomButton.setOnClickListener(this);
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     //when there is a user logged in
-                    getSupportActionBar().setTitle("Welcome, " + user.getDisplayName());
+                    //getSupportActionBar().setTitle("Welcome, " + user.getDisplayName());
                 } else {
                 }
             }
@@ -75,8 +77,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 startActivity(intent);
                                 break;
                             case R.id.action_account:
-                                Log.v(TAG, ".>>>>>...bottomnav ACCOUNT clicked");
                                 FirebaseUser user = mAuth.getCurrentUser();
+                                Log.v(TAG, ".>>>>>...bottomnav ACCOUNT clicked user:  "+user);
                                 if (user != null) {
                                     Intent intent0 = new Intent(MainActivity.this, UserAccountActivity.class);
                                     startActivity(intent0);
@@ -185,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void login() {
         //go to loginActivity
         Log.v(TAG, ".>>>>>...going to Login Activity");
-        Intent intent = new Intent (MainActivity.this,UserAccountActivity.class );
+        Intent intent = new Intent (MainActivity.this,LoginActivity.class );
         startActivity(intent);
     }
 
