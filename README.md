@@ -47,12 +47,23 @@ updated 10/20/2017
  * Created Fragment for details of museum object with FragmentPagerAdapter
  * Implicit Intent for all museum objects to view in the CooperHewitt website
 
+## Week3 Highlights
+ * Firebase user authentication implemented.
+ * Included a user Gallery to save Museum Objects by username in Firebase
+ * Firebase-Recycler Adapter is used to display from the database
+ * Option added for user to search museum using a 'word' in addition
+ 	to the color swatch search using searchview widget.
+ * SharedPreferences is used to save the last 'word' query 
+ * Added a bottomNavigationView in the Main Acitivity that will be extended in
+	additional areas (specifically the detail page).
 
-## Problems to Address
-* User Input Form Objective still missing from week1 in plan for week3. User will input
-    name of "Collection" to save museum images in.
-* On the Detail page when there is lengthy background material, it is still getting cut
-    off at the bottom even in the scrollable view.
+## Problems to Address/Things to do:
+* Clean up the detail View layout. When there is lengthy background material, it is still getting cut
+    off at the bottom even in the scrollable view. Include the bottomNavView here.
+* Add additional code for correctly processing the "random" feature. 
+* Style the CreateAccountActivity, UserAccountActivity to be cohesive with LoginActivity.
+* Improve the ArtifactList layout so image can occupy for width.
+* Write the "About" text.
 
 ## API Data Example:
 ![Alt text](app/src/main/res/drawable/chapi.png)

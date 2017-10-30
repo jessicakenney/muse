@@ -107,53 +107,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.bottom_navigation_main, menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
-
-//    @Override
-//    public boolean onPrepareOptionsMenu(Menu menu) {
-//
-//        MenuItem menuLogin = menu.findItem(R.id.action_login);
-//        MenuItem menuLogout = menu.findItem(R.id.action_logout);
-//        MenuItem menuGalleries = menu.findItem(R.id.action_galleries);
-//
-//        FirebaseUser user = mAuth.getCurrentUser();
-//        Log.d(TAG, ">>>: mCurrentUser >>>> "+user);
-//
-//        if(user != null ) {
-//            menuLogin.setVisible(false);
-//            menuLogout.setVisible(true);
-//            menuGalleries.setVisible(true);
-//        } else {
-//            menuLogin.setVisible(true);
-//            menuLogout.setVisible(false);
-//            menuGalleries.setVisible(false);
-//        }
-//        return super.onPrepareOptionsMenu(menu);
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//        if (id == R.id.action_login) {
-//            login();
-//            return true;
-//        }
-//        if (id == R.id.action_logout) {
-//            logout();
-//            return true;
-//        }
-//        if (id == R.id.action_galleries) {
-//            Intent intent = new Intent(MainActivity.this, SavedArtifactListActivity.class);
-//            startActivity(intent);
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
 
     @Override
     public void onClick(View v) {
@@ -164,10 +117,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
         if (v == mRandomButton){
-            Log.v(TAG, ".>>>>>...RANDOM selected: ");
-            Intent intent = new Intent (MainActivity.this,ArtifactListActivity.class );
-            intent.putExtra("option", "random");
-            startActivity(intent);
+//            Log.v(TAG, ".>>>>>...RANDOM selected: ");
+//            Intent intent = new Intent (MainActivity.this,ArtifactListActivity.class );
+//            intent.putExtra("option", "random");
+//            startActivity(intent);
         }
         if (v == mWordButton){
             Log.v(TAG, ".>>>>>...Word selected: ");
@@ -190,17 +143,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent (MainActivity.this,LoginActivity.class );
         startActivity(intent);
     }
-
-//    private void logout() {
-//        FirebaseAuth.getInstance().signOut();
-//        Intent intent = new Intent(MainActivity.this, MainActivity.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        startActivity(intent);
-//        Toast.makeText(MainActivity.this, "Bye Bye",
-//                Toast.LENGTH_LONG).show();
-//        finish();
-//    }
-
 
 
 }//Main
