@@ -1,8 +1,10 @@
 package com.epicodus.muse.ui;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.epicodus.muse.R;
 import com.epicodus.muse.adapters.ArtifactPagerAdapter;
@@ -20,6 +22,7 @@ public class ArtifactDetailActivity extends AppCompatActivity {
     ViewPager mViewPager;
     private ArtifactPagerAdapter adapterViewPager;
     ArrayList<Artifact> mArtifacts = new ArrayList<>();
+    public static final String TAG = ArtifactDetailActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class ArtifactDetailActivity extends AppCompatActivity {
         mArtifacts = Parcels.unwrap(getIntent().getParcelableExtra("artifacts"));
         int startingPosition = getIntent().getIntExtra("position", 0);
 
+        Log.v(TAG,"Detail Activity getItem Title>>>>>>"+ mArtifacts.get(0).getTitle());
         adapterViewPager = new ArtifactPagerAdapter(getSupportFragmentManager(), mArtifacts);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);

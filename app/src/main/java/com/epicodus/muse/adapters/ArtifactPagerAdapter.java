@@ -7,6 +7,7 @@ package com.epicodus.muse.adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 import com.epicodus.muse.models.Artifact;
 import com.epicodus.muse.ui.ArtifactDetailFragment;
@@ -14,6 +15,7 @@ import com.epicodus.muse.ui.ArtifactDetailFragment;
 import java.util.ArrayList;
 
 public class ArtifactPagerAdapter extends FragmentPagerAdapter {
+    public static final String TAG = ArtifactPagerAdapter.class.getSimpleName();
     private ArrayList<Artifact> mArtifacts;
 
     public ArtifactPagerAdapter(FragmentManager fm, ArrayList<Artifact> artifacts) {
@@ -23,6 +25,7 @@ public class ArtifactPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        Log.v(TAG,"Fragment getItem Title>>>>>>"+ mArtifacts.get(position).getTitle());
         return ArtifactDetailFragment.newInstance(mArtifacts.get(position));
     }
 

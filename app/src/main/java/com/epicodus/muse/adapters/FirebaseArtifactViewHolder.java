@@ -3,6 +3,7 @@ package com.epicodus.muse.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +22,8 @@ import com.squareup.picasso.Picasso;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+
+import static com.epicodus.muse.ui.ArtifactListActivity.TAG;
 
 /**
  * Created by momma on 10/27/17.
@@ -62,19 +65,11 @@ public class FirebaseArtifactViewHolder extends RecyclerView.ViewHolder implemen
                     artifacts.add(snapshot.getValue(Artifact.class));
                 }
 
+                Log.v(TAG,"look for artifact info from FIrebase for detail view"+artifacts);
                 int itemPosition = getLayoutPosition();
-                //reference from ArtifactLIst Adapter
-//                public void onClick(View v) {
-//                    int itemPosition = getLayoutPosition();
-//                    Intent intent = new Intent(mContext, ArtifactDetailActivity.class);
-//                    intent.putExtra("position", itemPosition);
-//                    intent.putExtra("artifacts", Parcels.wrap(mArtifacts));
-//                    mContext.startActivity(intent);
-//                }
-
-
+                Log.v(TAG,"look for artifact info from FIrebase for detail view"+artifacts.get(itemPosition).getTitle() + " Position " + itemPosition);
                 Intent intent = new Intent(mContext, ArtifactDetailActivity.class);
-                intent.putExtra("position", itemPosition + "");
+                intent.putExtra("position", itemPosition);
                 intent.putExtra("artifacts", Parcels.wrap(artifacts));
 
                 mContext.startActivity(intent);
