@@ -63,6 +63,15 @@ public class FirebaseArtifactViewHolder extends RecyclerView.ViewHolder implemen
                 }
 
                 int itemPosition = getLayoutPosition();
+                //reference from ArtifactLIst Adapter
+//                public void onClick(View v) {
+//                    int itemPosition = getLayoutPosition();
+//                    Intent intent = new Intent(mContext, ArtifactDetailActivity.class);
+//                    intent.putExtra("position", itemPosition);
+//                    intent.putExtra("artifacts", Parcels.wrap(mArtifacts));
+//                    mContext.startActivity(intent);
+//                }
+
 
                 Intent intent = new Intent(mContext, ArtifactDetailActivity.class);
                 intent.putExtra("position", itemPosition + "");
