@@ -23,7 +23,6 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-import static com.epicodus.muse.ui.ArtifactListActivity.TAG;
 
 /**
  * Created by momma on 10/27/17.
@@ -32,6 +31,8 @@ import static com.epicodus.muse.ui.ArtifactListActivity.TAG;
 public class FirebaseArtifactViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private static final int MAX_WIDTH = 300;
     private static final int MAX_HEIGHT = 300;
+    public static final String TAG = FirebaseArtifactViewHolder.class.getSimpleName();
+    public ImageView mArtifactImageView;
 
     View mView;
     Context mContext;
@@ -51,18 +52,24 @@ public class FirebaseArtifactViewHolder extends RecyclerView.ViewHolder implemen
         Picasso.with(mContext)
                 .load(artifact.getImageUrl())
                 .into(artifactImageView);
+
+
     }
 
     @Override
     public void onClick(View view) {
         final ArrayList<Artifact> artifacts = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_ARTIFACTS);
+        DatabaseReference ref = FirebaseDatabase.getInstance()
+                                .getReference(Constants.FIREBASE_CHILD_ARTIFACTS);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
+            //the ref is wrong here...need to be pushed into the uid node
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     artifacts.add(snapshot.getValue(Artifact.class));
+                    Log.v (TAG, "onDataChange  ...snapshotkey  "+ snapshot.getKey());
+                    Log.v (TAG, "onDataChange  ...Title  "+ artifacts.get(0).getTitle());
                 }
 
                 Log.v(TAG,"look for artifact info from FIrebase for detail view"+artifacts);

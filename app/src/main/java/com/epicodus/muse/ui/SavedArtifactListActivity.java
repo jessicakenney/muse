@@ -2,13 +2,18 @@ package com.epicodus.muse.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 
 import com.epicodus.muse.Constants;
 import com.epicodus.muse.R;
+import com.epicodus.muse.adapters.FirebaseArtifactListAdapter;
 import com.epicodus.muse.adapters.FirebaseArtifactViewHolder;
 import com.epicodus.muse.models.Artifact;
+import com.epicodus.muse.util.OnStartDragListener;
+import com.epicodus.muse.util.SimpleItemTouchHelperCallback;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -18,9 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class SavedArtifactListActivity extends AppCompatActivity {
+public class SavedArtifactListActivity extends AppCompatActivity implements OnStartDragListener {
     private DatabaseReference mArtifactReference;
-    private FirebaseRecyclerAdapter mFirebaseAdapter;
+    private FirebaseArtifactListAdapter mFirebaseAdapter;
+    private ItemTouchHelper mItemTouchHelper;
 
     @Bind(R.id.recyclerArtifactsView) RecyclerView mRecyclerView;
 
@@ -44,19 +50,27 @@ public class SavedArtifactListActivity extends AppCompatActivity {
     }
 
     private void setUpFirebaseAdapter() {
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Artifact, FirebaseArtifactViewHolder>
-                (Artifact.class, R.layout.artifact_list_item, FirebaseArtifactViewHolder.class,
-                        mArtifactReference) {
 
-            @Override
-            protected void populateViewHolder(FirebaseArtifactViewHolder viewHolder,
-                                              Artifact model, int position) {
-                viewHolder.bindArtifact(model);
-            }
-        };
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+        mArtifactReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_ARTIFACTS)
+                .child(uid);
+
+        mFirebaseAdapter = new FirebaseArtifactListAdapter(Artifact.class,
+                R.layout.artifact_list_item_drag, FirebaseArtifactViewHolder.class,
+                mArtifactReference, this, this);
+
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mFirebaseAdapter);
+
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mFirebaseAdapter);
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
+
     }
 
     @Override
@@ -64,4 +78,10 @@ public class SavedArtifactListActivity extends AppCompatActivity {
         super.onDestroy();
         mFirebaseAdapter.cleanup();
     }
+
+    @Override
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
+        mItemTouchHelper.startDrag(viewHolder);
+    }
+
 }
