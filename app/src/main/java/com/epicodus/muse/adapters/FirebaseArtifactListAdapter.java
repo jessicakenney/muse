@@ -85,7 +85,7 @@ public class FirebaseArtifactListAdapter extends FirebaseRecyclerAdapter<Artifac
             int index = mArtifacts.indexOf(artifact);
             //getRef(index) ? firebase knows the index?
             DatabaseReference ref = getRef(index);
-//            artifact.setIndex(Integer.toString(index));
+            artifact.setIndex(Integer.toString(index));
             ref.setValue(artifact);
         }
     }
@@ -94,9 +94,9 @@ public class FirebaseArtifactListAdapter extends FirebaseRecyclerAdapter<Artifac
     protected void populateViewHolder(final FirebaseArtifactViewHolder viewHolder, Artifact model, int position) {
         viewHolder.bindArtifact(model);
         mOrientation = viewHolder.itemView.getResources().getConfiguration().orientation;
-        if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-            createDetailFragment(0);
-        }
+//        if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            createDetailFragment(0);
+//        }
         viewHolder.mArtifactImageView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -112,7 +112,7 @@ public class FirebaseArtifactListAdapter extends FirebaseRecyclerAdapter<Artifac
             public void onClick(View v) {
                 int itemPosition = viewHolder.getAdapterPosition();
                 if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    createDetailFragment(itemPosition);
+//                    createDetailFragment(itemPosition);
                 } else {
                     Intent intent = new Intent(mContext, ArtifactDetailActivity.class);
                     intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);

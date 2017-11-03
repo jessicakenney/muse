@@ -18,6 +18,7 @@ public class Artifact {
     private String objectId;
     private String imageUrl;
     private String pushId;
+    private String index;
 
     public Artifact() {}
     public Artifact( String title, String type, String url, String medium, String date, String description, String justification, String objectId, String imageUrl ){
@@ -31,6 +32,7 @@ public class Artifact {
         this.justification = justification;
         this.objectId = objectId;
         this.imageUrl = imageUrl;
+        this.index = "not_specified";
     }
 
     public String getTitle() {
@@ -74,5 +76,14 @@ public class Artifact {
     public void setPushId(String pushId) {
         this.pushId = pushId;
     }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
+    }
+
 
 }

@@ -55,7 +55,6 @@ public class ArtifactDetailFragment extends Fragment implements View.OnClickList
         args.putParcelable("artifact", Parcels.wrap(artifact));
         artifactDetailFragment.setArguments(args);
 
-        Log.v(TAG,"NEW INSTANCE>>>>>>"+ artifact.getTitle() + artifact.getDescription());
         return artifactDetailFragment;
     }
 
@@ -72,7 +71,6 @@ public class ArtifactDetailFragment extends Fragment implements View.OnClickList
 
         Picasso.with(view.getContext()).load(mArtifact.getImageUrl()).into(mImageLabel);
 
-        Log.v(TAG,">>>>>>"+ mArtifact.getTitle() + mArtifact.getDescription());
         mTitleLabel.setText(mArtifact.getTitle());
         mMediumLabel.setText(mArtifact.getMedium());
         mDescriptionLabel.setText(mArtifact.getDescription());

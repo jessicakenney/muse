@@ -2,7 +2,6 @@ package com.epicodus.muse.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -14,11 +13,11 @@ import com.epicodus.muse.adapters.FirebaseArtifactViewHolder;
 import com.epicodus.muse.models.Artifact;
 import com.epicodus.muse.util.OnStartDragListener;
 import com.epicodus.muse.util.SimpleItemTouchHelperCallback;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -54,14 +53,19 @@ public class SavedArtifactListActivity extends AppCompatActivity implements OnSt
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
-        mArtifactReference = FirebaseDatabase
-                .getInstance()
+//        mArtifactReference = FirebaseDatabase
+//                .getInstance()
+//                .getReference(Constants.FIREBASE_CHILD_ARTIFACTS)
+//                .child(uid);
+
+        Query query = FirebaseDatabase.getInstance()
                 .getReference(Constants.FIREBASE_CHILD_ARTIFACTS)
-                .child(uid);
+                .child(uid)
+                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
 
         mFirebaseAdapter = new FirebaseArtifactListAdapter(Artifact.class,
                 R.layout.artifact_list_item_drag, FirebaseArtifactViewHolder.class,
-                mArtifactReference, this, this);
+                query, this, this);
 
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
