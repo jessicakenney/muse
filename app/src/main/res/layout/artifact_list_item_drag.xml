@@ -14,9 +14,9 @@
         android:scaleType="fitStart"
         android:adjustViewBounds="true"
         android:src="@drawable/waffles"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="12dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="12dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp" />

@@ -8,16 +8,19 @@ import android.widget.TextView;
 
 import com.epicodus.muse.R;
 import com.epicodus.muse.models.Artifact;
+import com.epicodus.muse.util.ItemTouchHelperViewHolder;
 import com.squareup.picasso.Picasso;
 
 import static com.epicodus.muse.R.id.artifactImageView;
+
+;
 
 
 /**
  * Created by momma on 10/27/17.
  */
 
-public class FirebaseArtifactViewHolder extends RecyclerView.ViewHolder {
+public class FirebaseArtifactViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
     private static final int MAX_WIDTH = 300;
     private static final int MAX_HEIGHT = 300;
     public static final String TAG = FirebaseArtifactViewHolder.class.getSimpleName();
@@ -26,7 +29,7 @@ public class FirebaseArtifactViewHolder extends RecyclerView.ViewHolder {
     View mView;
     Context mContext;
 
-    public FirebaseArtifactViewHolder(View itemView) {
+    public FirebaseArtifactViewHolder(View itemView)  {
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
@@ -43,5 +46,23 @@ public class FirebaseArtifactViewHolder extends RecyclerView.ViewHolder {
 
 
     }
+
+    @Override
+    public void onItemSelected() {
+        itemView.animate()
+                .alpha(0.7f)
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(500);
+    }
+
+    @Override
+    public void onItemClear() {
+        itemView.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f);
+    }
+
 
 }
