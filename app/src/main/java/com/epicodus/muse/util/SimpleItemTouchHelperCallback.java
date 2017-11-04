@@ -3,8 +3,6 @@ package com.epicodus.muse.util;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
-import com.epicodus.muse.util.ItemTouchHelperViewHolder.ItemTouchHelperViewHolder;
-
 /**
  * Created by Guest on 11/2/17.
  */
