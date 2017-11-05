@@ -25,6 +25,8 @@ import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -45,23 +47,26 @@ public class ArtifactDetailFragment extends Fragment implements View.OnClickList
     @Bind(R.id.galleryTextView)
     TextView mGalleryLabel;
     TextView scrollable;
-//    @Bind(R.id.saveArtifactButton) TextView mSaveArtifactButton;
 
     private Artifact mArtifact;
+    private ArrayList<Artifact> mArtifacts;
+    private int mPosition;
 
-    public static ArtifactDetailFragment newInstance(Artifact artifact) {
+    public static ArtifactDetailFragment newInstance(ArrayList<Artifact> artifacts,Integer position ) {
         ArtifactDetailFragment artifactDetailFragment = new ArtifactDetailFragment();
         Bundle args = new Bundle();
-        args.putParcelable("artifact", Parcels.wrap(artifact));
+        args.putParcelable(Constants.EXTRA_KEY_ARTIFACTS, Parcels.wrap(artifacts));
+        args.putInt(Constants.EXTRA_KEY_POSITION, position);
         artifactDetailFragment.setArguments(args);
-
         return artifactDetailFragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mArtifact = Parcels.unwrap(getArguments().getParcelable("artifact"));
+        mArtifacts = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_ARTIFACTS));
+        mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
+        mArtifact = mArtifacts.get(mPosition);
     }
 
     @Override

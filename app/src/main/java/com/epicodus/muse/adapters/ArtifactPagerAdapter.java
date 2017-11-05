@@ -24,7 +24,7 @@ public class ArtifactPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return ArtifactDetailFragment.newInstance(mArtifacts.get(position));
+        return ArtifactDetailFragment.newInstance(mArtifacts, position);
     }
 
     @Override

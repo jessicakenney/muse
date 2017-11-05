@@ -6,8 +6,8 @@ package com.epicodus.muse.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.support.v4.view.MotionEventCompat;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -34,6 +34,7 @@ import java.util.Collections;
  */
 
 public class FirebaseArtifactListAdapter extends FirebaseRecyclerAdapter<Artifact, FirebaseArtifactViewHolder> implements ItemTouchHelperAdapter {
+    public static final String TAG = FirebaseArtifactListAdapter.class.getSimpleName();
     private DatabaseReference mRef;
     private OnStartDragListener mOnStartDragListener;
     private Context mContext;
@@ -76,16 +77,16 @@ public class FirebaseArtifactListAdapter extends FirebaseRecyclerAdapter<Artifac
 
             }
         });
-
-
     }
 
     private void setIndexInFirebase() {
+        Log.v(TAG,"setting Indexes after movement");
         for (Artifact artifact : mArtifacts) {
             int index = mArtifacts.indexOf(artifact);
-            //getRef(index) ? firebase knows the index?
+            Log.v(TAG,"Index  : "+index);
             DatabaseReference ref = getRef(index);
             artifact.setIndex(Integer.toString(index));
+            Log.v(TAG,"artifact "+artifact.getTitle());
             ref.setValue(artifact);
         }
     }
@@ -94,9 +95,6 @@ public class FirebaseArtifactListAdapter extends FirebaseRecyclerAdapter<Artifac
     protected void populateViewHolder(final FirebaseArtifactViewHolder viewHolder, Artifact model, int position) {
         viewHolder.bindArtifact(model);
         mOrientation = viewHolder.itemView.getResources().getConfiguration().orientation;
-//        if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-//            createDetailFragment(0);
-//        }
         viewHolder.mArtifactImageView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -111,35 +109,14 @@ public class FirebaseArtifactListAdapter extends FirebaseRecyclerAdapter<Artifac
             @Override
             public void onClick(View v) {
                 int itemPosition = viewHolder.getAdapterPosition();
-                if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-//                    createDetailFragment(itemPosition);
-                } else {
                     Intent intent = new Intent(mContext, ArtifactDetailActivity.class);
                     intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);
                     intent.putExtra(Constants.EXTRA_KEY_ARTIFACTS, Parcels.wrap(mArtifacts));
                     mContext.startActivity(intent);
-                }
             }
         });
 
     }
-
-    private void createDetailFragment(int position) {
-
-//        // Creates new ArtifactDetailFragment with the given position:
-//        ArtifactDetailFragment detailFragment = ArtifactDetailFragment.newInstance(mArtifacts, position);
-//
-//        // Gathers necessary components to replace the FrameLayout in the layout with the ArtifactDetailFragment:
-//        FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
-//
-//        //  Replaces the FrameLayout with the ArtifactDetailFragment:
-//        ft.replace(R.id.artifactDetailContainer, detailFragment);
-//
-//        // Commits these changes:
-//        ft.commit();
-    }
-
-
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
@@ -161,6 +138,5 @@ public class FirebaseArtifactListAdapter extends FirebaseRecyclerAdapter<Artifac
         setIndexInFirebase();
         mRef.removeEventListener(mChildEventListener);
     }
-
 
 }

@@ -27,7 +27,7 @@ public class SavedArtifactListActivity extends AppCompatActivity implements OnSt
     private FirebaseArtifactListAdapter mFirebaseAdapter;
     private ItemTouchHelper mItemTouchHelper;
 
-    @Bind(R.id.recyclerArtifactsView) RecyclerView mRecyclerView;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

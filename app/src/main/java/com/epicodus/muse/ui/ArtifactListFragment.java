@@ -16,7 +16,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.epicodus.muse.Constants;
 import com.epicodus.muse.R;
@@ -38,66 +37,75 @@ import okhttp3.Response;
  */
 public class ArtifactListFragment extends Fragment {
     public static final String TAG = ArtifactListActivity.class.getSimpleName();
-    @Bind(R.id.nullSearchTextView)
-    TextView mNullSearchTextView;
-    @Bind(R.id.recyclerArtifactsView)
-    RecyclerView mRecyclerView;
+    //@Bind(R.id.nullSearchTextView) TextView mNullSearchTextView;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private ArtifactListAdapter mAdapter;
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private String mRecentWord;
     public ArrayList<Artifact> artifacts = new ArrayList<>();
+    private String mValue ;
+    private String mOption ;
+
 
     public ArtifactListFragment() {
         // Required empty public constructor
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        String value = "";
-        String option = "";
         super.onCreate(savedInstanceState);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        mEditor = mSharedPreferences.edit();
 
+        setHasOptionsMenu(true);
+//        String value = "";
+//        String option = "";
+//
 
 //        Intent intent = getIntent();
 //        String value = intent.getStringExtra("value");
 //        String option = intent.getStringExtra("option");
 
-        Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            value = bundle.getString("value",null);
-            option = bundle.getString("option",null);
-        }
+//        Bundle bundle = this.getArguments();
+//        if (bundle != null) {
+//            value = bundle.getString("value",null);
+//            option = bundle.getString("option",null);
+//        }
 
-        setHasOptionsMenu(true);
 
         //if word query save in sharedPreferences
-        if (option.equals("word")) {
-
-            mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            mEditor = mSharedPreferences.edit();
-
-            mRecentWord = mSharedPreferences.getString(Constants.PREFERENCES_WORD_KEY, null);
-
-            if (mRecentWord != null) {
-                getArtifacts(option, mRecentWord);
-                Log.d(TAG, "Using word saved in sharedPreferences : "+mRecentWord);
-            }
-        } else {
-            getArtifacts(option, value);
-        }
+//        if (option.equals("word")) {
+//
+//            mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+//            mEditor = mSharedPreferences.edit();
+//
+//            mRecentWord = mSharedPreferences.getString(Constants.PREFERENCES_WORD_KEY, null);
+//
+//            if (mRecentWord != null) {
+//                getArtifacts(option, mRecentWord);
+//                Log.d(TAG, "Using word saved in sharedPreferences : "+mRecentWord);
+//            }
+//        } else {
+//            getArtifacts(option, value);
+//        }
     }
-
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view =  inflater.inflate(R.layout.activity_artifact_list,container,false);
+        View view =  inflater.inflate(R.layout.fragment_artifact_list,container,false);
         ButterKnife.bind(this,view);
 
-        // Inflate the layout for this fragment
+        mRecentWord = mSharedPreferences.getString(Constants.PREFERENCES_WORD_KEY, null);
+
+        if (mRecentWord != null) {
+            getArtifacts("word", mRecentWord);
+        }
+
         return view;
     }
 
@@ -118,7 +126,7 @@ public class ArtifactListFragment extends Fragment {
                 public void run() {
                     // if artifacts return 0, report  nullSearchTextView
                     if ( artifacts.size() == 0 ) {
-                        mNullSearchTextView.setText("No results found for your query.");
+                        //mNullSearchTextView.setText("No results found for your query.");
                     } else {
                         mAdapter = new ArtifactListAdapter(getActivity(), artifacts);
                         mRecyclerView.setAdapter(mAdapter);

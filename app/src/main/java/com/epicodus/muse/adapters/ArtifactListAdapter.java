@@ -2,6 +2,9 @@ package com.epicodus.muse.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 import com.epicodus.muse.R;
 import com.epicodus.muse.models.Artifact;
 import com.epicodus.muse.ui.ArtifactDetailActivity;
+import com.epicodus.muse.ui.ArtifactDetailFragment;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -57,24 +61,46 @@ public class ArtifactListAdapter extends RecyclerView.Adapter<ArtifactListAdapte
     public class ArtifactViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.artifactImageView) ImageView mArtifactImageView;
         @Bind(R.id.artifactTitleTextView) TextView mTitleTextView;
-        //@Bind(R.id.artifactMediumTextView) TextView mMediumTextView;
-
+        private int mOrientation;
         private Context mContext;
+
+
+
 
         public ArtifactViewHolder(View itemView) {
             super(itemView);
                 ButterKnife.bind(this, itemView);
                 mContext = itemView.getContext();
                 itemView.setOnClickListener(this);
+                // Determines the current orientation of the device:
+                mOrientation = itemView.getResources().getConfiguration().orientation;
+
+                // Checks if the recorded orientation matches Android's landscape configuration.
+                // if so, we create a new DetailFragment to display in our special landscape layout:
+                if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    createDetailFragment(0);
+                }
+        }
+
+        // Takes position of restaurant in list as parameter:
+        private void createDetailFragment(int position) {
+            ArtifactDetailFragment detailFragment = ArtifactDetailFragment.newInstance(mArtifacts, position);
+            FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.artifactDetailContainer, detailFragment);
+            ft.commit();
         }
 
         @Override
         public void onClick(View v) {
             int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, ArtifactDetailActivity.class);
-            intent.putExtra("position", itemPosition);
-            intent.putExtra("artifacts", Parcels.wrap(mArtifacts));
-            mContext.startActivity(intent);
+            if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                createDetailFragment(itemPosition);
+            } else {
+                Intent intent = new Intent(mContext, ArtifactDetailActivity.class);
+                intent.putExtra("position", itemPosition);
+                intent.putExtra("artifacts", Parcels.wrap(mArtifacts));
+                mContext.startActivity(intent);
+            }
         }
 
         public void bindArtifact(Artifact artifact) {
