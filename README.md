@@ -70,9 +70,6 @@ updated 10/20/2017
 ## Color Grid Query to Retrieve Museum Artifacts:
 ![Alt text](images/colorgrid.png)
 
-## User Saved Gallery
-![Alt text](images/gallery.png)
-
 ## User Saved Gallery with gestures and animation to reorder, delete persisted in Firebase.
 ![Alt text](images/gallery.png)
 
