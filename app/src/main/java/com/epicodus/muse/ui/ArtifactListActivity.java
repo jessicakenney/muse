@@ -43,16 +43,6 @@ public class ArtifactListActivity extends AppCompatActivity {
 //        bundle.putString("option", option);
 //        this.fragment.setArguments(bundle);
 
-//        //if word query save in sharedPreferences
-//        if (option.equals("word")) {
-//            mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//            mRecentWord = mSharedPreferences.getString(Constants.PREFERENCES_WORD_KEY, null);
-//            if (mRecentWord != null) {
-//                getArtifacts(option, mRecentWord);
-//                Log.d(TAG, "Using word saved in sharedPreferences : "+mRecentWord);
-//            }
-//        } else {
-//            getArtifacts(option, value);
-//        }
+
     }
 }

@@ -60,35 +60,12 @@ public class ArtifactListFragment extends Fragment {
         mEditor = mSharedPreferences.edit();
 
         setHasOptionsMenu(true);
-//        String value = "";
-//        String option = "";
-//
 
-//        Intent intent = getIntent();
-//        String value = intent.getStringExtra("value");
-//        String option = intent.getStringExtra("option");
-
+//        //trying to get data
 //        Bundle bundle = this.getArguments();
 //        if (bundle != null) {
-//            value = bundle.getString("value",null);
-//            option = bundle.getString("option",null);
-//        }
-
-
-        //if word query save in sharedPreferences
-//        if (option.equals("word")) {
-//
-//            mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-//            mEditor = mSharedPreferences.edit();
-//
-//            mRecentWord = mSharedPreferences.getString(Constants.PREFERENCES_WORD_KEY, null);
-//
-//            if (mRecentWord != null) {
-//                getArtifacts(option, mRecentWord);
-//                Log.d(TAG, "Using word saved in sharedPreferences : "+mRecentWord);
-//            }
-//        } else {
-//            getArtifacts(option, value);
+//            mValue = bundle.getString("value",null);
+//            mOption = bundle.getString("option",null);
 //        }
     }
 
@@ -101,10 +78,15 @@ public class ArtifactListFragment extends Fragment {
         ButterKnife.bind(this,view);
 
         mRecentWord = mSharedPreferences.getString(Constants.PREFERENCES_WORD_KEY, null);
+        getArtifacts("word", mRecentWord);
 
-        if (mRecentWord != null) {
-            getArtifacts("word", mRecentWord);
-        }
+//            if ((mRecentWord != null) && (mOption.equals("word"))) {
+//                getArtifacts("word", mRecentWord);
+//                Log.d(TAG, "Using word saved in sharedPreferences : "+mRecentWord);
+//            } else {
+//                Log.d(TAG, "Calling getArtifacts for : "+mOption + mValue);
+//                getArtifacts(mOption, mValue);
+//            }
 
         return view;
     }
@@ -161,12 +143,7 @@ public class ArtifactListFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu,inflater);
 
-       // MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
-        //ButterKnife.bind(this);
-
-        //mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        //mEditor = mSharedPreferences.edit();
 
         MenuItem menuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);

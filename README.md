@@ -57,7 +57,18 @@ updated 10/20/2017
  * Added a bottomNavigationView in the Main Acitivity that will be extended in
 	additional areas (specifically the detail page).
 
-## Problems to Address/Things to do:
+## Week4 Highlights
+ * Swipe to delete gesture included with animation in user Gallery.
+ * Drag and drop capability to reorder user Gallery images.
+ * Index included on list items for Firebase to persist user functions.
+ * Artifact List Activity was refactored to a Fragment for versatility on landscape view.
+ * Custom landscape layout included for list and detail, however this is only working for Word Query.
+      After refactoring the ArtifactListFragment, I was unable to successfully pass the additional
+        search parameters between Activity and Fragment. I will need some guidance for best
+        practice here.
+
+
+## General Problems to Address/Things to do:
 * Clean up the detail View layout. When there is lengthy background material, it is still getting cut
     off at the bottom even in the scrollable view. Include the bottomNavView here.
 * Add additional code for correctly processing the "random" feature. 
