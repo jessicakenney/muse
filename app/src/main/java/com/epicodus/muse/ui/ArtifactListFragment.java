@@ -3,6 +3,7 @@ package com.epicodus.muse.ui;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
@@ -23,6 +24,8 @@ import com.epicodus.muse.adapters.ArtifactListAdapter;
 import com.epicodus.muse.models.Artifact;
 import com.epicodus.muse.services.CooperHewittService;
 
+import org.parceler.Parcels;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -31,6 +34,9 @@ import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+
+import static android.content.Intent.getIntent;
+import static android.content.Intent.getIntentOld;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,15 +64,13 @@ public class ArtifactListFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         mEditor = mSharedPreferences.edit();
-
+        ButterKnife.bind(this.getActivity());
+        mValue = getActivity().getIntent().getStringExtra("value");
+        mOption = getActivity().getIntent().getStringExtra("option");
+        Log.v("HERE!", mValue +  mOption + "");
         setHasOptionsMenu(true);
 
-//        //trying to get data
-//        Bundle bundle = this.getArguments();
-//        if (bundle != null) {
-//            mValue = bundle.getString("value",null);
-//            mOption = bundle.getString("option",null);
-//        }
+
     }
 
 
@@ -78,15 +82,15 @@ public class ArtifactListFragment extends Fragment {
         ButterKnife.bind(this,view);
 
         mRecentWord = mSharedPreferences.getString(Constants.PREFERENCES_WORD_KEY, null);
-        getArtifacts("word", mRecentWord);
+        //getArtifacts("word", mRecentWord);
 
-//            if ((mRecentWord != null) && (mOption.equals("word"))) {
-//                getArtifacts("word", mRecentWord);
-//                Log.d(TAG, "Using word saved in sharedPreferences : "+mRecentWord);
-//            } else {
-//                Log.d(TAG, "Calling getArtifacts for : "+mOption + mValue);
-//                getArtifacts(mOption, mValue);
-//            }
+        if ((mRecentWord != null) && (mOption.equals("word"))) {
+            getArtifacts("word", mRecentWord);
+            Log.d(TAG, "Using word saved in sharedPreferences : "+mRecentWord);
+        } else {
+            Log.d(TAG, "Calling getArtifacts for : "+mOption + mValue);
+            getArtifacts(mOption, mValue);
+        }
 
         return view;
     }

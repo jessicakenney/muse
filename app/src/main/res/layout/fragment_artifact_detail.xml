@@ -96,12 +96,15 @@
                 android:id="@+id/artifactJustificationTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_below="@+id/artifactDescriptionTextView"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:maxLines="50"
+                android:scrollbars="vertical"
                 android:text="Justification"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:id="@+id/webLinktextView"

@@ -33,7 +33,7 @@ public class SavedArtifactListActivity extends AppCompatActivity implements OnSt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_artifact_list);
+        setContentView(R.layout.activity_saved_artifact_list);
         ButterKnife.bind(this);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

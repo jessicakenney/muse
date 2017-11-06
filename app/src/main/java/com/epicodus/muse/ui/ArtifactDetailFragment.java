@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,8 +82,8 @@ public class ArtifactDetailFragment extends Fragment implements View.OnClickList
         mDescriptionLabel.setText(mArtifact.getDescription());
         mJustificationLabel.setText(mArtifact.getJustification());
 
-        scrollable = mJustificationLabel;
-        scrollable.setMovementMethod(new ScrollingMovementMethod());
+        //scrollable = mJustificationLabel;
+        //scrollable.setMovementMethod(new ScrollingMovementMethod());
 
         mWebsiteLabel.setOnClickListener(this);
         mGalleryLabel.setOnClickListener(this);

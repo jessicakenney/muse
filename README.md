@@ -62,10 +62,7 @@ updated 10/20/2017
  * Drag and drop capability to reorder user Gallery images.
  * Index included on list items for Firebase to persist user functions.
  * Artifact List Activity was refactored to a Fragment for versatility on landscape view.
- * Custom landscape layout included for list and detail, however this is only working for Word Query.
-      After refactoring the ArtifactListFragment, I was unable to successfully pass the additional
-        search parameters between Activity and Fragment. I will need some guidance for best
-        practice here.
+ * Custom landscape layout included for list and detail in the query, (not the Saved List). 
 
 
 ## General Problems to Address/Things to do:
