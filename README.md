@@ -64,6 +64,25 @@ updated 10/20/2017
  * Artifact List Activity was refactored to a Fragment for versatility on landscape view.
  * Custom landscape layout included for list and detail in the query, (not the Saved List). 
 
+## MainActivity:
+![Alt text](images/main.png)
+
+## Color Grid Query to Retrieve Museum Artifacts:
+![Alt text](images/colorgrid.png)
+
+## User Saved Gallery
+![Alt text](images/gallery.png)
+
+## User Saved Gallery with gestures and animation to reorder, delete persisted in Firebase.
+![Alt text](images/gallery.png)
+
+## Firebase User Authentication
+![Alt text](images/login.png)
+
+
+## API Data Example:
+![Alt text](images/chapi.png)
+![Alt text](images/chapi2.png)
 
 ## General Problems to Address/Things to do:
 * Clean up the detail View layout. When there is lengthy background material, it is still getting cut
@@ -74,15 +93,15 @@ updated 10/20/2017
 * Write the "About" text.
 
 ## API Data Example:
-![Alt text](app/src/main/res/drawable/chapi.png)
-![Alt text](app/src/main/res/drawable/chapi2.png)
+![Alt text](images/chapi.png)
+![Alt text](images/chapi2.png)
 
 ## Setup/Installation:
 * Clone the repo
 * Open in Android Studio with Virtual Android Device, run app 
 
 ## Technologies Used
-Android Studio, Postman, Cooper Hewitt API, Java
+Android Studio, Postman, Cooper Hewitt API, Java , Firebase
 
 
 ### Legal
